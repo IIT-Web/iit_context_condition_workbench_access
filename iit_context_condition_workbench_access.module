@@ -8,3 +8,51 @@
 /* Hook Implementations                      */
 /* ***************************************** */
 
+/**
+ * Implements hook_context_plugins().
+ *
+ * @return array
+ */
+function iit_context_condition_workbench_access_context_plugins() {
+    $plugins = array();
+    $plugins['iit_condition_workbench_access'] = array(
+        'handler' => array(
+            'path' => drupal_get_path('module', 'iit_context_condition_workbench_access') . '/plugins',
+            'file' => 'iit_condition_workbench_access.inc',
+            'class' => 'iit_condition_workbench_access',
+            'parent' => 'context_condition',
+        ),
+    );
+    return $plugins;
+}
+
+/**
+ * Implements hook_context_registry().
+ *
+ * @return array
+ */
+function iit_context_condition_workbench_access_context_registry() {
+    return array(
+        'conditions' => array(
+            'iit_condition_workbench_access' => array(
+                'title' => t('IIT - Workbench Access'),
+                'description' => t('Set this context if the node is assigned to the workbench access section.'),
+                'plugin' => 'iit_condition_workbench_access',
+            ),
+        ),
+    );
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function iit_context_condition_workbench_access_node_view($node, $view_mode) {
+    // Fire our context plugin when viewing nodes
+    if ($view_mode == 'full') {
+        if ($plugin = context_get_plugin('condition', 'iit_condition_workbench_access')) {
+            $plugin->execute($node);
+        }
+    }
+}
+
+

@@ -7,4 +7,6 @@ package = Illinois Institute of Technology
 dependencies[] = context
 dependencies[] = workbench_access
 
+files[] = plugins/iit_condition_workbench_access.inc
+
 version = 7.x-0.1
