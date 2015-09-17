@@ -1,0 +1,10 @@
+name = IIT Context Condition for Workbench Access
+description = Provides a context condition for the assigned Workbench Access section
+
+core = 7.x
+package = Illinois Institute of Technology
+
+dependencies[] = context
+dependencies[] = workbench_access
+
+version = 7.x-0.1

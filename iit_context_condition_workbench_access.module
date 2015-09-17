@@ -1,0 +1,10 @@
+<?php
+/**
+ * @file
+ * Provides a context condition for the assigned Workbench Access section
+ */
+
+/* ***************************************** */
+/* Hook Implementations                      */
+/* ***************************************** */
+
